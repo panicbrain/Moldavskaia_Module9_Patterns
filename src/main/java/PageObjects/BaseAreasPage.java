@@ -25,36 +25,30 @@ public abstract class BaseAreasPage extends AbstractPage {
     public static final String MAIL_SUBJECT = SUBJECT_TO_MAIL.toString();
 
     public NewLetterPage createNewLetter() {
-        waitForAjaxProcessed();
         waitForElementEnabled(NEW_LETTER_BUTTON);
         driver.findElement(NEW_LETTER_BUTTON).click();
         return new NewLetterPage(driver);
     }
 
     public DraftMailsPage openDraftFolder() {
-        waitForAjaxProcessed();
         waitForElementEnabled(DRAFT_LETTERS_FOLDER_LOCATOR);
         driver.findElement(DRAFT_LETTERS_FOLDER_LOCATOR).click();
         return new DraftMailsPage(driver);
     }
 
     public SentMailsPage openSentFolder() {
-        waitForAjaxProcessed();
         waitForElementEnabled(SENT_LETTERS_FOLDER_LOCATOR);
         driver.findElement(SENT_LETTERS_FOLDER_LOCATOR).click();
         return new SentMailsPage(driver);
     }
 
     public HomePage logOff() {
-        waitForAjaxProcessed();
         waitForElementEnabled(LOG_OFF_BUTTON_LOCATOR);
-        WebElement logOffLink = driver.findElement(LOG_OFF_BUTTON_LOCATOR);
-        new Actions(driver).click(logOffLink).build().perform();
+        driver.findElement(LOG_OFF_BUTTON_LOCATOR).click();
         return new HomePage(driver);
     }
 
     public List<String> getSubjectTextsOfMails() throws InterruptedException {
-        waitForAjaxProcessed();
         driver.navigate().refresh();
         waitForElementPresent(MAIL_SUBJECTS_LOCATOR);
         List<WebElement> subjectsOfMailForTest = driver.findElements(MAIL_SUBJECTS_LOCATOR);

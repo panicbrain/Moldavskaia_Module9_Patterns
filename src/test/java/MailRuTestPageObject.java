@@ -1,6 +1,7 @@
 import BusinessObjects.Letters;
 import BusinessObjects.Users;
 import DriverManager.ChromeWebDriverSingleton;
+import DriverManager.WebDriverDecorator;
 import PageObjects.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,6 +22,7 @@ public class MailRuTestPageObject {
     @BeforeClass
     public void beforeClass() {
         driver = ChromeWebDriverSingleton.getWebDriverInstance();
+        driver = new WebDriverDecorator(driver);
     }
 
     @AfterClass(alwaysRun = true)

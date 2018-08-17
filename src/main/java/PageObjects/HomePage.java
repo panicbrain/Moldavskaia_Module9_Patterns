@@ -23,9 +23,8 @@ public class HomePage extends AbstractPage {
     public IncomingMailsPage logIn(Users user) {
         String login = user.getLogin();
         String password = user.getPassword();
-        driver.findElement(LOGIN_INPUT_LOCATOR).clear();
-        WebElement loginInput = driver.findElement(LOGIN_INPUT_LOCATOR);
-        new Actions(driver).sendKeys(loginInput, login).build().perform();
+        //  driver.findElement(LOGIN_INPUT_LOCATOR).clear();
+        driver.findElement(LOGIN_INPUT_LOCATOR).sendKeys(login);
         driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys(password);
         driver.findElement(SIGN_IN_BUTTON).click();
         return new IncomingMailsPage(driver);

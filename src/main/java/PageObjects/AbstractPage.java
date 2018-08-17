@@ -41,15 +41,4 @@ public abstract class AbstractPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", driver.findElement(locator));
     }
 
-    private ExpectedCondition<Boolean> isAjaxFinished() {
-        return new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return (Boolean) ((JavascriptExecutor) driver).executeScript("return $.active == 0");
-            }
-        };
-    }
-
-    protected void waitForAjaxProcessed() {
-        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(isAjaxFinished());
-    }
 }

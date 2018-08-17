@@ -27,7 +27,6 @@ public class NewLetterPage extends BaseAreasPage {
         driver.findElement(EMAIL_ADDRESS_INPUT_LOCATOR).sendKeys(email);
         waitForElementsVisible(SUBJECT_INPUT_LOCATOR);
         driver.findElement(SUBJECT_INPUT_LOCATOR).sendKeys(MAIL_SUBJECT);
-        waitForAjaxProcessed();
         driver.switchTo().frame(driver.findElement(FRAME_MAIL_BODY_LOCATOR));
         waitForElementEnabled(MAIL_BODY_INPUT_LOCATOR);
         driver.findElement(MAIL_BODY_INPUT_LOCATOR).sendKeys(mailBodyText);
